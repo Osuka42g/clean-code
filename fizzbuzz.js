@@ -5,9 +5,9 @@ function printWizeLineFizzBuzz() {
 }
 
 function textForValue(n) {
-    if (n % 15 === 0) return "WizeLine"
-    if (n % 5 === 0) return "Wize"
-    if (n % 3 === 0) return "Line"
+    if (n % 3 === 0 && n % 5 === 0) return "WizeLine"
+    if (n % 3 === 0) return "Wize"
+    if (n % 5 === 0) return "Line"
     return n
 }
 
