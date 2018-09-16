@@ -1,35 +1,34 @@
 function mostPopularName(votes) {
-    var total = []
-    votes.forEach(function(e) {
-        if (typeof(total[e]) !== 'undefined') {
-            total[e] = total[e] + 1
+    var votesPerName = []
+    votes.forEach(function(name) {
+        if (typeof(votesPerName[name]) !== "undefined") {
+            votesPerName[name] = votesPerName[name] + 1
         } else {
-            total[e] = 1
+            votesPerName[name] = 1
         }
     })
 
-    var highestTotal = 0
-    var highestName
+    var mostVotedName = ""
+    var highestScore = 0
+    var names = Object.keys(votesPerName)
     
-    var names = Object.keys(total)
-    
-    var highest = 0
-    names.forEach(function(key) {
-        if (total[key] > highest) {
-            highest = total[key]
-            highestName = key
+    names.forEach(function(name) {
+        if (votesPerName[name] > highestScore) {
+            highestScore = votesPerName[name]
+            mostVotedName = name
         }
     })
 
-    return highestName
+    return mostVotedName
 }
 
 function printMostPopularName(names) {
     console.log(mostPopularName(names))
 }
 
-var names = ["Jessica", "Mauricia", "Jacky", "Jacky", 'Heriberta', "Romualdo", "Mauricia", "Heriberta", "Jacky"]
+var names = ["Jessica", "Mauricia", "Jacky", "Jacky", "Heriberta", "Romualdo", "Mauricia", "Heriberta", "Jacky"]
 
 var mostPopular = mostPopularName(names)
 console.log(mostPopular)
+
 printMostPopularName(names)
