@@ -1,4 +1,4 @@
-function popular(votes, print) {
+function mostPopularName(votes) {
     var total = []
     votes.forEach(function(e) {
         if (typeof(total[e]) !== 'undefined') {
@@ -21,14 +21,15 @@ function popular(votes, print) {
         }
     })
 
-    if (print) {
-        console.log(highestName)
-    } else {
-        return highestName
-    }
+    return highestName
+}
+
+function printMostPopularName(names) {
+    console.log(mostPopularName(names))
 }
 
 var names = ["Jessica", "Mauricia", "Jacky", "Jacky", 'Heriberta', "Romualdo", "Mauricia", "Heriberta", "Jacky"]
 
-popular(names, true)
-console.log(popular(names, false))
+var mostPopular = mostPopularName(names)
+console.log(mostPopular)
+printMostPopularName(names)
