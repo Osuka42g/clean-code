@@ -1,41 +1,25 @@
-function popular(votes, print) {
-    var total = []
-    votes.forEach(function(e) {
-        // console.log(e)
-        if (typeof(total[e]) !== 'undefined') {
-            total[e] = total[e] + 1
-        } else {
-            total[e] = 1
-        }
-    })
-    // console.log(total.sort())
+const names = ["Jessica", "Mauricia", "Jacky", "Jacky", "Heriberta", "Romualdo", "Mauricia", "Heriberta", "Jacky"];
 
-    var highestTotal = 0
-    var highestName
-    
-    // console.log("====")
-    // console.log(total)
-    // console.log("====")
-    
-    var names = Object.keys(total)
-    
-    var highest = 0
-    names.forEach(function(key) {
-        // console.log(key)
-        if (total[key] > highest) {
-            highest = total[key]
-            highestName = key
-        }
-    })
+const getOcurrenceMap = (values) => {
+    const ocurrenceMap = {};
 
-    if (print) {
-        console.log(highestName)
-    } else {
-        return highestName
+    values.forEach(value => {
+        ocurrenceMap[value] = ocurrenceMap[value] ? ocurrenceMap[value] + 1 : 1;
+    });
+
+    return ocurrenceMap;
+};
+
+const mostPopularName = (namesArray) => {
+    const nameOcurrenceMap = getOcurrenceMap(namesArray);
+
+    let highestName = Object.keys(nameOcurrenceMap)[0];
+
+    for (const name in nameOcurrenceMap) {
+        highestName = nameOcurrenceMap[name] > nameOcurrenceMap[highestName] ? name : highestName;
     }
-}
 
-var names = ["Jessica", "Mauricia", "Jacky", "Jacky", 'Heriberta', "Romualdo", "Mauricia", "Heriberta", "Jacky"]
+    return highestName;
+};
 
-popular(names, true)
-console.log(popular(names, false))
+console.log(mostPopularName(names));
